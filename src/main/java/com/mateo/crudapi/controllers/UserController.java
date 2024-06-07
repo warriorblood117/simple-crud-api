@@ -21,7 +21,7 @@ import com.mateo.crudapi.services.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/v1")
- @CrossOrigin(origins = "${cors.allowedOrigins}")
+@CrossOrigin(origins = "${cors.allowedOrigins}")
 public class UserController {
 
     @Value("${cors.allowedOrigins}")
@@ -32,7 +32,7 @@ public class UserController {
 
     @Value("${cors.allowedHeaders}")
     private String allowedHeaders;
-    
+
     @Autowired
     private UserServiceImpl userServiceImpl;
 
@@ -59,5 +59,10 @@ public class UserController {
     @GetMapping("find-user/{id}")
     ResponseEntity findById(@PathVariable Long id) {
         return this.userServiceImpl.findById(id);
+    }
+
+    @DeleteMapping("/delete-post/{id}")
+    ResponseEntity deletePost(@PathVariable Long id) {
+        return this.userServiceImpl.deletePostById(id);
     }
 }

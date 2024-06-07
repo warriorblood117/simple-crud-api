@@ -10,4 +10,5 @@ public interface IUserService {
     ResponseEntity save(User user);
     ResponseEntity update(Long id, User userDetails);
     ResponseEntity deleteById(Long id);
+    ResponseEntity deletePostById(Long idPost);
 }
