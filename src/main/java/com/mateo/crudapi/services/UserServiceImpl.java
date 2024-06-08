@@ -79,13 +79,13 @@ public class UserServiceImpl implements IUserService {
     public ResponseEntity deletePostById(Long idPost) {
         User user = userRepository.findByPostsId(idPost).orElse(null);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"message\": \"Post not found\"}");
         }
 
         user.getPosts().removeIf(post -> post.getId().equals(idPost));
         userRepository.save(user); // Guardar los cambios en la base de datos
 
-        return ResponseEntity.ok("Post deleted successfully");
+        return ResponseEntity.ok("{\"message\": \"Post deleted successfully\"}");
     }
 
 }
